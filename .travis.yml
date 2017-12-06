@@ -1,0 +1,10 @@
+language: cpp
+install:
+  - apt-get update -y
+  - apt-get install -y build-essential git libncurses5-dev qt5-default qttools5-dev-tools mercurial libdbus-glib-1-dev texinfo zip openssh-client libxml2-utils software-properties-common wget cpio bc locales rsync imagemagick nano vim automake mtools dosfstools subversion openjdk-8-jdk libssl-dev
+script:
+  - git submodule init
+  - git submodule update
+  - cd buildroot && git reset HEAD --hard
+  - git clean -dfx
+  - make recalbox-rpi3_defconfig
